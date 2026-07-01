@@ -18,27 +18,27 @@
 <section class="py-14">
   <div class="container-shell">
     <div class="mb-8">
-      <h1 class="text-4xl font-black">Menu Diagnosa</h1>
-      <p class="mt-2 text-slate-600">Mulai dari gejala utama, lalu jawab pertanyaan lanjutan seperti konsultasi teknisi.</p>
+      <h1 class="text-4xl font-black animate-fade-up">Menu Diagnosa</h1>
+      <p class="mt-2 text-slate-600 animate-fade-up delay-100">Mulai dari gejala utama, lalu jawab pertanyaan lanjutan seperti konsultasi teknisi.</p>
     </div>
 
     {#if form?.message}
-      <div class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+      <div class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 animate-fade-down">
         {form.message}
       </div>
     {/if}
 
-    <form method="POST" enctype="multipart/form-data" class="panel p-6">
-      <div class="mb-6">
+    <form method="POST" enctype="multipart/form-data" class="panel p-6 reveal">
+      <div class="mb-6 animate-fade-up delay-150">
         <label class="label" for="namaUser">Nama User</label>
         <input class="input" id="namaUser" name="namaUser" value={form?.namaUser ?? ''} placeholder="Masukkan nama" required />
       </div>
 
       <div class="mb-8">
-        <h2 class="mb-3 text-lg font-bold">1. Pilih Gejala Utama</h2>
+        <h2 class="mb-3 text-lg font-bold animate-fade-up delay-200">1. Pilih Gejala Utama</h2>
         <div class="grid gap-3 md:grid-cols-2">
-          {#each data.gejala as item}
-            <label class="flex min-h-20 cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-brand hover:bg-teal-50">
+          {#each data.gejala as item, i}
+            <label class="form-card flex min-h-20 cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4">
               <input
                 class="mt-1 h-4 w-4 border-slate-300 text-brand"
                 type="radio"
@@ -68,8 +68,8 @@
           <p class="mt-4 text-sm font-semibold text-slate-500">Belum ada pertanyaan lanjutan untuk gejala ini.</p>
         {:else}
           <div class="mt-4 grid gap-3 md:grid-cols-2">
-            {#each followUpQuestions as item}
-              <label class="flex min-h-20 cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-brand">
+            {#each followUpQuestions as item, i}
+              <label class="form-card flex min-h-20 cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4 animate-scale-in" style="animation-delay: {i * 60}ms">
                 <input
                   class="mt-1 h-4 w-4 rounded border-slate-300 text-brand"
                   type="checkbox"
@@ -92,7 +92,7 @@
         <h2 class="mb-3 text-lg font-bold">3. Gejala Tambahan</h2>
         <div class="grid gap-3 md:grid-cols-2">
         {#each data.gejala as item}
-          <label class="flex min-h-20 cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-brand hover:bg-teal-50">
+          <label class="form-card flex min-h-20 cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4">
             <input
               class="mt-1 h-4 w-4 rounded border-slate-300 text-brand"
               type="checkbox"
@@ -110,7 +110,7 @@
         </div>
       </div>
 
-      <div class="mb-8 grid gap-5 md:grid-cols-2">
+      <div class="mb-8 grid gap-5 md:grid-cols-2 reveal">
         <div>
           <label class="label" for="gambar">Upload Gambar Kerusakan</label>
           <input class="input" id="gambar" type="file" name="gambar" accept="image/png,image/jpeg,image/webp" />

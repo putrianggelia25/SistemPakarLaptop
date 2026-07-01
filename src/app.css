@@ -10,6 +10,24 @@ body {
   @apply bg-slate-50 text-ink antialiased;
 }
 
+/* ============================================================
+   ANIMATION DELAY UTILITIES (for staggered entrance effects)
+   ============================================================ */
+.delay-0   { animation-delay: 0ms; }
+.delay-75  { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* ============================================================
+   ENHANCED COMPONENT TRANSITIONS
+   ============================================================ */
 @layer components {
   .container-shell {
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
@@ -17,22 +35,81 @@ body {
 
   .panel {
     @apply rounded-lg border border-slate-200 bg-white shadow-soft;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .panel:hover {
+    @apply shadow-glow;
+    transform: translateY(-2px);
+    border-color: rgba(15, 118, 110, 0.2);
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-800;
+    @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-white;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-primary:hover {
+    @apply bg-teal-800;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(15, 118, 110, 0.3);
+  }
+
+  .btn-primary:hover::after {
+    opacity: 1;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100;
+    @apply inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-secondary:hover {
+    @apply bg-slate-100;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0) scale(0.98);
   }
 
   .btn-danger {
-    @apply inline-flex items-center justify-center rounded-md border border-red-200 bg-white px-3 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-50;
+    @apply inline-flex items-center justify-center rounded-md border border-red-200 bg-white px-3 py-2 text-sm font-semibold text-red-700;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-danger:hover {
+    @apply bg-red-50;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
   }
 
   .input {
-    @apply w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-teal-100;
+    @apply w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .input:focus {
+    @apply border-brand ring-2 ring-teal-100;
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.08);
   }
 
   .label {
@@ -54,8 +131,247 @@ body {
   .table td {
     @apply px-4 py-3 align-top text-slate-700;
   }
+
+  /* Table row hover effect */
+  .table tbody tr {
+    transition: background-color 0.2s ease;
+  }
+
+  .table tbody tr:hover {
+    background-color: rgba(15, 118, 110, 0.03);
+  }
 }
 
+/* ============================================================
+   SCROLL-REVEAL INTERSECTION OBSERVER ANIMATIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================================
+   PAGE TRANSITION WRAPPER
+   ============================================================ */
+.page-enter {
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   NAVBAR EFFECTS
+   ============================================================ */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #14b8a6, #0f766e);
+  border-radius: 999px;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-link:hover {
+  color: #5eead4 !important;
+}
+
+/* ============================================================
+   HERO SPECIAL EFFECTS
+   ============================================================ */
+.hero-title {
+  background: linear-gradient(135deg, #ffffff 0%, #99f6e4 50%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.hero-badge {
+  animation: fade-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.hero-desc {
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.hero-cta {
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+/* ============================================================
+   STAT COUNTER ANIMATION
+   ============================================================ */
+.stat-card {
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(15, 118, 110, 0.12);
+}
+
+.stat-number {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-number {
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   STEP CARD HOVER EFFECTS
+   ============================================================ */
+.step-card {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0f766e, #14b8a6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(15, 118, 110, 0.12);
+  border-color: rgba(15, 118, 110, 0.3);
+}
+
+.step-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   PROGRESS BAR ANIMATION
+   ============================================================ */
+.bar-animated {
+  transform-origin: left;
+  animation: bar-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   CHECKBOX/RADIO FORM CARD INTERACTIONS
+   ============================================================ */
+.form-card {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.form-card:hover {
+  border-color: #0f766e;
+  background: rgba(15, 118, 110, 0.03);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.08);
+}
+
+.form-card:has(input:checked) {
+  border-color: #0f766e;
+  background: rgba(15, 118, 110, 0.06);
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.15);
+}
+
+/* ============================================================
+   TAG / BADGE PILL EFFECT
+   ============================================================ */
+.tag-pill {
+  transition: all 0.25s ease;
+}
+
+.tag-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08);
+}
+
+/* ============================================================
+   LINK EFFECTS
+   ============================================================ */
+.link-hover {
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.link-hover:hover {
+  color: #0f766e;
+}
+
+/* ============================================================
+   LOADING SKELETON SHIMMER
+   ============================================================ */
+.skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   CHART BAR ANIMATION (admin dashboard)
+   ============================================================ */
+.chart-bar {
+  transform-origin: bottom;
+  animation: chart-bar-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+@keyframes chart-bar-rise {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.chart-bar:hover {
+  filter: brightness(1.15);
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
 @media print {
   .no-print {
     display: none !important;
@@ -63,5 +379,27 @@ body {
 
   body {
     background: white;
+  }
+
+  /* Disable animations in print */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION RESPECT
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal, .reveal-scale {
+    opacity: 1;
+    transform: none;
   }
 }

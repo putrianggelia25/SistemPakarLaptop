@@ -28,13 +28,13 @@
 
 <section class="py-14">
   <div class="container-shell max-w-4xl">
-    <div class="mb-6 flex flex-col justify-between gap-3 md:flex-row md:items-center">
+    <div class="mb-6 flex flex-col justify-between gap-3 md:flex-row md:items-center animate-fade-up">
       <div>
-        <a class="text-sm text-slate-500 hover:text-brand" href="/admin/diagnosa">Kembali ke Laporan</a>
+        <a class="text-sm text-slate-500 link-hover" href="/admin/diagnosa">Kembali ke Laporan</a>
         <h1 class="mt-1 text-3xl font-black">Detail Diagnosa #{diagnosa.id}</h1>
         <p class="mt-1 text-slate-600">{diagnosa.namaUser} - {formatDate(diagnosa.tanggal)}</p>
       </div>
-      <span class="inline-flex items-center gap-1.5 self-start rounded-full border px-3 py-1.5 text-sm font-semibold {statusInfo.cls}">
+      <span class="inline-flex items-center gap-1.5 self-start rounded-full border px-3 py-1.5 text-sm font-semibold tag-pill {statusInfo.cls}">
         <span
           class="h-2 w-2 rounded-full {diagnosa.status === 'pending'
             ? 'bg-amber-400'
@@ -47,12 +47,12 @@
     </div>
 
     {#if form?.message}
-      <div class="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+      <div class="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 animate-fade-down">
         {form.message}
       </div>
     {/if}
     {#if form?.success}
-      <div class="mb-4 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm text-teal-700">
+      <div class="mb-4 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm text-teal-700 animate-fade-down">
         {#if form.action === 'setujui'}Diagnosa berhasil disetujui.
         {:else if form.action === 'revisi'}Diagnosa berhasil direvisi.
         {:else if form.action === 'retain'}{form.added} gejala baru berhasil disimpan ke basis kasus.
@@ -62,16 +62,16 @@
 
     <div class="grid gap-6 lg:grid-cols-3">
       <div class="space-y-6 lg:col-span-2">
-        <div class="panel p-6">
+        <div class="panel p-6 reveal">
           <h2 class="mb-4 text-lg font-bold">Hasil CBR System</h2>
           <div class="grid gap-4 sm:grid-cols-2">
             <div>
               <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Hasil Sistem (Reuse)</p>
               <p class="mt-1 text-xl font-black">{diagnosa.hasilKerusakan}</p>
-              <p class="mt-1 text-2xl font-black text-brand">{formatPercent(diagnosa.nilaiSimilarity)}</p>
+              <p class="mt-1 text-2xl font-black text-brand stat-number">{formatPercent(diagnosa.nilaiSimilarity)}</p>
             </div>
             {#if diagnosa.status === 'direvisi'}
-              <div class="rounded-lg bg-blue-50 p-4">
+              <div class="rounded-lg bg-blue-50 p-4 animate-scale-in">
                 <p class="text-xs font-semibold uppercase tracking-wide text-blue-500">Hasil Revisi Admin</p>
                 <p class="mt-1 text-xl font-black text-blue-800">{diagnosa.hasilRevisi}</p>
                 {#if diagnosa.catatanRevisi}
@@ -88,8 +88,8 @@
                 <tr><th>Kerusakan</th><th>Similarity</th><th>Tingkat</th></tr>
               </thead>
               <tbody>
-                {#each diagnosa.results as row}
-                  <tr class={row.id === (diagnosa.idKerusakanRevisi ?? diagnosa.idKerusakanHasil ?? diagnosa.results[0]?.id) ? 'bg-teal-50 font-semibold' : ''}>
+                {#each diagnosa.results as row, i}
+                  <tr class="animate-fade-up {row.id === (diagnosa.idKerusakanRevisi ?? diagnosa.idKerusakanHasil ?? diagnosa.results[0]?.id) ? 'bg-teal-50 font-semibold' : ''}" style="animation-delay: {i * 60}ms">
                     <td>{row.nama}</td>
                     <td>{formatPercent(row.similarity)}</td>
                     <td>{row.tingkat}</td>
@@ -100,11 +100,11 @@
           </div>
         </div>
 
-        <div class="panel p-6">
+        <div class="panel p-6 reveal" style="transition-delay: 100ms">
           <h2 class="mb-3 font-bold">Gejala Dipilih User</h2>
           <div class="flex flex-wrap gap-2">
-            {#each diagnosa.gejalaDipilih as item}
-              <span class="rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">
+            {#each diagnosa.gejalaDipilih as item, i}
+              <span class="rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700 tag-pill animate-scale-in" style="animation-delay: {i * 50}ms">
                 {item.kode} - {item.nama}
               </span>
             {/each}
@@ -118,7 +118,7 @@
           {#if diagnosa.gambar}
             <div class="mt-4">
               <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Dokumentasi Gambar</p>
-              <img class="max-h-64 rounded-lg border object-contain" src={diagnosa.gambar} alt="Dokumentasi" />
+              <img class="max-h-64 rounded-lg border object-contain transition-transform duration-500 hover:scale-[1.02]" src={diagnosa.gambar} alt="Dokumentasi" />
             </div>
           {/if}
         </div>
@@ -126,13 +126,13 @@
 
       <div class="space-y-4">
         {#if diagnosa.status === 'pending' || diagnosa.status === 'disetujui'}
-          <div class="panel p-5">
+          <div class="panel p-5 reveal" style="transition-delay: 150ms">
             <h3 class="mb-1 font-bold text-teal-700">Setujui Hasil</h3>
             <p class="mb-3 text-xs text-slate-500">Konfirmasi bahwa hasil sistem sudah benar.</p>
             <form method="POST" action="?/setujui" use:enhance>
               <input type="hidden" name="catatanRevisi" value="" />
               <button
-                class="w-full rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-700 disabled:opacity-50"
+                class="w-full rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-teal-700 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none"
                 disabled={diagnosa.status === 'disetujui'}
               >
                 {diagnosa.status === 'disetujui' ? 'Sudah Disetujui' : 'Setujui Diagnosa'}
@@ -142,19 +142,19 @@
         {/if}
 
         {#if diagnosa.status !== 'disetujui'}
-          <div class="panel p-5">
+          <div class="panel p-5 reveal" style="transition-delay: 200ms">
             <h3 class="mb-1 font-bold text-blue-700">Revisi Hasil</h3>
             <p class="mb-3 text-xs text-slate-500">Koreksi jika hasil sistem kurang tepat.</p>
 
             <button
-              class="mb-3 w-full rounded-lg border border-blue-300 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+              class="mb-3 w-full rounded-lg border border-blue-300 px-4 py-2 text-sm font-semibold text-blue-700 transition-all duration-300 hover:bg-blue-50 hover:-translate-y-0.5"
               onclick={() => (showRevisiForm = !showRevisiForm)}
             >
               {showRevisiForm ? 'Tutup Form' : 'Buka Form Revisi'}
             </button>
 
             {#if showRevisiForm}
-              <form method="POST" action="?/revisi" use:enhance class="space-y-3">
+              <form method="POST" action="?/revisi" use:enhance class="space-y-3 animate-scale-in">
                 <div>
                   <label class="label text-xs" for="idKerusakanRevisi">Kerusakan yang Benar</label>
                   <select class="input" id="idKerusakanRevisi" name="idKerusakanRevisi" required>
@@ -175,7 +175,7 @@
                     placeholder="Alasan koreksi..."
                   >{diagnosa.catatanRevisi ?? ''}</textarea>
                 </div>
-                <button class="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+                <button class="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5">
                   Simpan Revisi
                 </button>
               </form>
@@ -183,7 +183,7 @@
           </div>
         {/if}
 
-        <div class="panel p-5 {diagnosa.retained ? 'opacity-60' : ''}">
+        <div class="panel p-5 reveal {diagnosa.retained ? 'opacity-60' : ''}" style="transition-delay: 250ms">
           <h3 class="mb-1 font-bold text-purple-700">Retain ke Basis Kasus</h3>
           <p class="mb-3 text-xs text-slate-500">
             {#if diagnosa.retained}
@@ -197,7 +197,7 @@
           </p>
           <form method="POST" action="?/retain" use:enhance>
             <button
-              class="w-full rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-50"
+              class="w-full rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-purple-700 hover:shadow-lg hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none"
               disabled={diagnosa.retained || !canRetain}
             >
               {diagnosa.retained ? 'Sudah Di-retain' : 'Retain ke Basis Kasus'}
@@ -206,7 +206,7 @@
         </div>
 
         {#if diagnosa.retained}
-          <div class="rounded-lg border border-purple-200 bg-purple-50 p-4 text-xs text-purple-700">
+          <div class="rounded-lg border border-purple-200 bg-purple-50 p-4 text-xs text-purple-700 animate-scale-in">
             <p class="font-semibold">Kasus sudah di-retain</p>
             <p class="mt-1">Gejala dari diagnosa ini sudah masuk ke basis kasus dan akan mempengaruhi diagnosa berikutnya.</p>
           </div>

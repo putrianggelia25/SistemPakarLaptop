@@ -245,6 +245,178 @@
   ],
   "diagnosa": [
     {
+      "id": 16,
+      "namaUser": "Putri Anggelia",
+      "tanggal": "2026-06-27T09:05:41.050Z",
+      "status": "pending",
+      "gejalaUtama": 1,
+      "selectedGejala": [
+        1,
+        2,
+        5
+      ],
+      "gejalaDipilih": [
+        {
+          "id": 1,
+          "kode": "G01",
+          "nama": "Laptop mati total"
+        },
+        {
+          "id": 2,
+          "kode": "G02",
+          "nama": "Laptop cepat panas"
+        },
+        {
+          "id": 5,
+          "kode": "G05",
+          "nama": "Laptop restart sendiri"
+        }
+      ],
+      "catatan": "",
+      "gambar": null,
+      "idKerusakanHasil": 4,
+      "hasilKerusakan": "Kerusakan Power Supply",
+      "nilaiSimilarity": 0.64,
+      "results": [
+        {
+          "id": 4,
+          "kode": "K04",
+          "nama": "Kerusakan Power Supply",
+          "penjelasan": "Masalah adaptor, port charging, baterai, atau IC power dapat membuat laptop tidak menyala atau tidak menerima daya.",
+          "solusi": "Periksa adaptor, kabel charger, port DC, baterai, dan IC power.",
+          "tingkat": "Berat",
+          "similarity": 0.64,
+          "persentase": 64
+        },
+        {
+          "id": 1,
+          "kode": "K01",
+          "nama": "Overheating",
+          "penjelasan": "Suhu laptop terlalu tinggi karena debu pada kipas, sirkulasi udara buruk, atau thermal paste mengering.",
+          "solusi": "Bersihkan kipas, ganti thermal paste, gunakan cooling pad, dan pastikan ventilasi tidak tertutup.",
+          "tingkat": "Sedang",
+          "similarity": 0.45,
+          "persentase": 45
+        },
+        {
+          "id": 2,
+          "kode": "K02",
+          "nama": "Kerusakan RAM",
+          "penjelasan": "RAM bermasalah dapat menyebabkan blue screen, restart sendiri, gagal booting, atau performa tidak stabil.",
+          "solusi": "Bersihkan pin RAM, pasang ulang RAM, jalankan memory test, atau ganti modul RAM.",
+          "tingkat": "Sedang",
+          "similarity": 0.4186046511627907,
+          "persentase": 41.86
+        },
+        {
+          "id": 5,
+          "kode": "K05",
+          "nama": "Kerusakan Baterai",
+          "penjelasan": "Baterai aus membuat daya cepat habis, persentase tidak stabil, atau proses charging tidak normal.",
+          "solusi": "Kalibrasi baterai, cek battery health, dan ganti baterai bila kapasitas sudah turun drastis.",
+          "tingkat": "Ringan",
+          "similarity": 0.4186046511627907,
+          "persentase": 41.86
+        },
+        {
+          "id": 3,
+          "kode": "K03",
+          "nama": "Kerusakan VGA",
+          "penjelasan": "Gangguan GPU/VGA dapat membuat layar blank, FPS turun, driver crash, atau muncul artefak visual.",
+          "solusi": "Perbarui driver VGA, cek suhu GPU, dan lakukan pemeriksaan hardware bila gejala berulang.",
+          "tingkat": "Berat",
+          "similarity": 0.1875,
+          "persentase": 18.75
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "namaUser": "Putri Anggelia",
+      "tanggal": "2026-06-27T09:02:36.247Z",
+      "status": "pending",
+      "gejalaUtama": 1,
+      "selectedGejala": [
+        1,
+        2,
+        4
+      ],
+      "gejalaDipilih": [
+        {
+          "id": 1,
+          "kode": "G01",
+          "nama": "Laptop mati total"
+        },
+        {
+          "id": 2,
+          "kode": "G02",
+          "nama": "Laptop cepat panas"
+        },
+        {
+          "id": 4,
+          "kode": "G04",
+          "nama": "FPS game menurun"
+        }
+      ],
+      "catatan": "",
+      "gambar": null,
+      "idKerusakanHasil": 3,
+      "hasilKerusakan": "Kerusakan VGA",
+      "nilaiSimilarity": 0.46875000000000006,
+      "results": [
+        {
+          "id": 3,
+          "kode": "K03",
+          "nama": "Kerusakan VGA",
+          "penjelasan": "Gangguan GPU/VGA dapat membuat layar blank, FPS turun, driver crash, atau muncul artefak visual.",
+          "solusi": "Perbarui driver VGA, cek suhu GPU, dan lakukan pemeriksaan hardware bila gejala berulang.",
+          "tingkat": "Berat",
+          "similarity": 0.46875000000000006,
+          "persentase": 46.88
+        },
+        {
+          "id": 1,
+          "kode": "K01",
+          "nama": "Overheating",
+          "penjelasan": "Suhu laptop terlalu tinggi karena debu pada kipas, sirkulasi udara buruk, atau thermal paste mengering.",
+          "solusi": "Bersihkan kipas, ganti thermal paste, gunakan cooling pad, dan pastikan ventilasi tidak tertutup.",
+          "tingkat": "Sedang",
+          "similarity": 0.4666666666666666,
+          "persentase": 46.67
+        },
+        {
+          "id": 4,
+          "kode": "K04",
+          "nama": "Kerusakan Power Supply",
+          "penjelasan": "Masalah adaptor, port charging, baterai, atau IC power dapat membuat laptop tidak menyala atau tidak menerima daya.",
+          "solusi": "Periksa adaptor, kabel charger, port DC, baterai, dan IC power.",
+          "tingkat": "Berat",
+          "similarity": 0.4,
+          "persentase": 40
+        },
+        {
+          "id": 2,
+          "kode": "K02",
+          "nama": "Kerusakan RAM",
+          "penjelasan": "RAM bermasalah dapat menyebabkan blue screen, restart sendiri, gagal booting, atau performa tidak stabil.",
+          "solusi": "Bersihkan pin RAM, pasang ulang RAM, jalankan memory test, atau ganti modul RAM.",
+          "tingkat": "Sedang",
+          "similarity": 0.23255813953488372,
+          "persentase": 23.26
+        },
+        {
+          "id": 5,
+          "kode": "K05",
+          "nama": "Kerusakan Baterai",
+          "penjelasan": "Baterai aus membuat daya cepat habis, persentase tidak stabil, atau proses charging tidak normal.",
+          "solusi": "Kalibrasi baterai, cek battery health, dan ganti baterai bila kapasitas sudah turun drastis.",
+          "tingkat": "Ringan",
+          "similarity": 0.186046511627907,
+          "persentase": 18.6
+        }
+      ]
+    },
+    {
       "id": 14,
       "namaUser": "jj",
       "tanggal": "2026-06-01T01:55:58.083Z",
@@ -1295,168 +1467,6 @@
           "tingkat": "Sedang",
           "similarity": 0.20588235294117643,
           "persentase": 20.59
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "namaUser": "dimas",
-      "tanggal": "2026-05-25T13:09:39.537Z",
-      "selectedGejala": [
-        1,
-        2,
-        3
-      ],
-      "gejalaDipilih": [
-        {
-          "id": 1,
-          "kode": "G01",
-          "nama": "Laptop mati total"
-        },
-        {
-          "id": 2,
-          "kode": "G02",
-          "nama": "Laptop cepat panas"
-        },
-        {
-          "id": 3,
-          "kode": "G03",
-          "nama": "Kipas berbunyi keras"
-        }
-      ],
-      "hasilKerusakan": "Overheating",
-      "nilaiSimilarity": 0.5588235294117646,
-      "results": [
-        {
-          "id": 1,
-          "kode": "K01",
-          "nama": "Overheating",
-          "penjelasan": "Suhu laptop terlalu tinggi karena debu pada kipas, sirkulasi udara buruk, atau thermal paste mengering.",
-          "solusi": "Bersihkan kipas, ganti thermal paste, gunakan cooling pad, dan pastikan ventilasi tidak tertutup.",
-          "tingkat": "Sedang",
-          "similarity": 0.5588235294117646,
-          "persentase": 55.88
-        },
-        {
-          "id": 4,
-          "kode": "K04",
-          "nama": "Kerusakan Power Supply",
-          "penjelasan": "Masalah adaptor, port charging, baterai, atau IC power dapat membuat laptop tidak menyala atau tidak menerima daya.",
-          "solusi": "Periksa adaptor, kabel charger, port DC, baterai, dan IC power.",
-          "tingkat": "Berat",
-          "similarity": 0.4,
-          "persentase": 40
-        },
-        {
-          "id": 3,
-          "kode": "K03",
-          "nama": "Kerusakan VGA",
-          "penjelasan": "Gangguan GPU/VGA dapat membuat layar blank, FPS turun, driver crash, atau muncul artefak visual.",
-          "solusi": "Perbarui driver VGA, cek suhu GPU, dan lakukan pemeriksaan hardware bila gejala berulang.",
-          "tingkat": "Berat",
-          "similarity": 0.1875,
-          "persentase": 18.75
-        },
-        {
-          "id": 2,
-          "kode": "K02",
-          "nama": "Kerusakan RAM",
-          "penjelasan": "RAM bermasalah dapat menyebabkan blue screen, restart sendiri, gagal booting, atau performa tidak stabil.",
-          "solusi": "Bersihkan pin RAM, pasang ulang RAM, jalankan memory test, atau ganti modul RAM.",
-          "tingkat": "Sedang",
-          "similarity": 0,
-          "persentase": 0
-        },
-        {
-          "id": 5,
-          "kode": "K05",
-          "nama": "Kerusakan Baterai",
-          "penjelasan": "Baterai aus membuat daya cepat habis, persentase tidak stabil, atau proses charging tidak normal.",
-          "solusi": "Kalibrasi baterai, cek battery health, dan ganti baterai bila kapasitas sudah turun drastis.",
-          "tingkat": "Ringan",
-          "similarity": 0,
-          "persentase": 0
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "namaUser": "dimas",
-      "tanggal": "2026-05-25T13:05:39.729Z",
-      "selectedGejala": [
-        1,
-        2,
-        5
-      ],
-      "gejalaDipilih": [
-        {
-          "id": 1,
-          "kode": "G01",
-          "nama": "Laptop mati total"
-        },
-        {
-          "id": 2,
-          "kode": "G02",
-          "nama": "Laptop cepat panas"
-        },
-        {
-          "id": 5,
-          "kode": "G05",
-          "nama": "Laptop restart sendiri"
-        }
-      ],
-      "hasilKerusakan": "Kerusakan Power Supply",
-      "nilaiSimilarity": 0.64,
-      "results": [
-        {
-          "id": 4,
-          "kode": "K04",
-          "nama": "Kerusakan Power Supply",
-          "penjelasan": "Masalah adaptor, port charging, baterai, atau IC power dapat membuat laptop tidak menyala atau tidak menerima daya.",
-          "solusi": "Periksa adaptor, kabel charger, port DC, baterai, dan IC power.",
-          "tingkat": "Berat",
-          "similarity": 0.64,
-          "persentase": 64
-        },
-        {
-          "id": 1,
-          "kode": "K01",
-          "nama": "Overheating",
-          "penjelasan": "Suhu laptop terlalu tinggi karena debu pada kipas, sirkulasi udara buruk, atau thermal paste mengering.",
-          "solusi": "Bersihkan kipas, ganti thermal paste, gunakan cooling pad, dan pastikan ventilasi tidak tertutup.",
-          "tingkat": "Sedang",
-          "similarity": 0.49999999999999994,
-          "persentase": 50
-        },
-        {
-          "id": 2,
-          "kode": "K02",
-          "nama": "Kerusakan RAM",
-          "penjelasan": "RAM bermasalah dapat menyebabkan blue screen, restart sendiri, gagal booting, atau performa tidak stabil.",
-          "solusi": "Bersihkan pin RAM, pasang ulang RAM, jalankan memory test, atau ganti modul RAM.",
-          "tingkat": "Sedang",
-          "similarity": 0.32,
-          "persentase": 32
-        },
-        {
-          "id": 3,
-          "kode": "K03",
-          "nama": "Kerusakan VGA",
-          "penjelasan": "Gangguan GPU/VGA dapat membuat layar blank, FPS turun, driver crash, atau muncul artefak visual.",
-          "solusi": "Perbarui driver VGA, cek suhu GPU, dan lakukan pemeriksaan hardware bila gejala berulang.",
-          "tingkat": "Berat",
-          "similarity": 0.1875,
-          "persentase": 18.75
-        },
-        {
-          "id": 5,
-          "kode": "K05",
-          "nama": "Kerusakan Baterai",
-          "penjelasan": "Baterai aus membuat daya cepat habis, persentase tidak stabil, atau proses charging tidak normal.",
-          "solusi": "Kalibrasi baterai, cek battery health, dan ganti baterai bila kapasitas sudah turun drastis.",
-          "tingkat": "Ringan",
-          "similarity": 0,
-          "persentase": 0
         }
       ]
     }
